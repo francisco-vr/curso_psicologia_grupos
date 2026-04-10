@@ -1,0 +1,1591 @@
+---
+title: "Toma de Decisiones en Grupo"
+author: 
+  - "Francisco Villarroel Riquelme"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+    seal: false
+---
+class: left, middle, bg_decisiones
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#1a5276",
+  secondary_color = "#2e86c1",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+```{css, echo=F}
+.bg_decisiones {
+  position: relative;
+  z-index: 1;
+}
+.bg_decisiones::before {
+  content: "";
+  background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1400');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px; right: 0px; bottom: 0px; left: 0px;
+  opacity: 0.20;
+  z-index: -1;
+}
+.definition-box {
+  background: #eaf2fb;
+  border-left: 5px solid #1a5276;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 10px 0;
+  font-size: 0.88em;
+}
+.highlight-box {
+  background: #fef9e7;
+  border: 2px solid #f39c12;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.warning-box {
+  background: #fdedec;
+  border-left: 5px solid #e74c3c;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(26,82,118,0.12);
+  font-size: 0.84em;
+}
+.card-blue { border-top: 4px solid #1a5276; }
+.card-orange { border-top: 4px solid #e67e22; }
+.card-red { border-top: 4px solid #c0392b; }
+.card-green { border-top: 4px solid #1e8449; }
+.badge {
+  display: inline-block;
+  background: #1a5276;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78em;
+  font-weight: bold;
+  margin-right: 6px;
+}
+.badge-orange { background: #e67e22; }
+.badge-green { background: #1e8449; }
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+.step-num {
+  background: #1a5276;
+  color: white;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 0.9em;
+}
+.footnote-small {
+  font-size: 0.68em;
+  color: #777;
+  border-top: 1px solid #DDD;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+table { font-size: 0.78em; width: 100%; border-collapse: collapse; }
+th { background: #1a5276; color: white; padding: 7px 10px; text-align: left; }
+td { padding: 6px 10px; border-bottom: 1px solid #e0e0e0; }
+tr:nth-child(even) { background: #f5f7fa; }
+blockquote {
+  border-left: 4px solid #f39c12;
+  background: #fef9e7;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #333;
+  margin: 10px 0;
+  font-size: 0.90em;
+}
+```
+
+---
+class: left, middle, bg_decisiones
+
+# Toma de Decisiones en Grupo
+
+## Psicología Social de los Grupos — Clase 3
+
+
+
+**Francisco Villarroel Riquelme** | `r Sys.Date()`
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+# Objetivos de la clase
+
+.three-col[
+.card.card-blue[
+**Parte I: Toma de Decisiones**
+
+- Comprender el proceso funcional de toma de decisión en grupos
+- Analizar la polarización grupal y sus mecanismos
+- Entender el sesgo de información compartida (perfil oculto)
+- Conocer el modelo de pensamiento grupal (Janis)
+]
+
+.card.card-orange[
+**Parte II: Cooperación Grupal**
+
+- Comprender el dilema de los comunes y del prisionero
+- Identificar tipos de cooperadores en experimentos
+- Analizar factores que promueven la cooperación: castigo, monitoreo, liderazgo, normas e identidad social
+]
+
+.card-green[
+
+**Parte III: Agresión grupal**
+
+- Teoría de la agresión
+
+- Factores sociales que habilitan la agresividad
+
+- Métodos de medición de agresividad
+
+]
+
+]
+
+
+
+---
+class: inverse, center, middle
+
+# PARTE I: Toma de Decisiones en Grupo
+
+
+---
+class: inverse, center, middle
+
+# ¿Tomamos mejores decisiónes en grupo?
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## ¿Grupos vs. Individuos?
+
+.two-col[
+.definition-box[
+**La evidencia general indica que los grupos...**
+
+- Aprenden más rápido y cometen menos errores
+- Recuerdan mejor los hechos
+- Toman decisiones de mayor calidad
+- Son más productivos en cantidad y calidad
+
+_(Baron, Kerr & Miller, 1992; Laughlin, 1980)_
+]
+
+.warning-box[
+**Pero también...**
+
+- La superioridad es condicional al **tipo de tarea**
+- En tareas de estimación numérica → grupos son mejores que el *promedio individual*
+- En problemas complejos → grupos son mejores que el promedio, pero peores que el **mejor individuo**
+- Excepciones: problemas "eureka" (Hastie, 1986)
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Teoría Funcional de la Toma de Decisiones
+
+.definition-box[
+**Gouran & Hirokawa (1983):** La calidad de la decisión grupal depende de cómo los miembros se **comunican** y utilizan la información relevante. La toma de decisión sigue fases que deben cumplirse para lograr calidad.
+]
+
+<br>
+
+.three-col[
+.card.card-blue[
+**① Definir el problema**
+Identificar con precisión la naturaleza, gravedad y alcance del problema
+]
+.card.card-blue[
+**② Identificar opciones**
+Revisar alternativas posibles, ordenarlas por relevancia y realismo
+]
+.card.card-blue[
+**③ Reunir información**
+Buscar consecuencias potenciales de cada opción; compartir información única
+]
+]
+
+---
+class: inverse, center, middle
+
+# Sesgos en la Toma de Decisiones Grupal
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## 1. Polarización Grupal
+
+.two-col[
+.definition-box[
+**Definición (Moscovici & Zavalloni, 1969):**
+
+La discusión grupal provoca una **intensificación de la postura inicialmente dominante** en el grupo.
+
+No es simplemente "tendencia al riesgo" (*risky shift*, Stoner 1961), sino un fenómeno más general: la respuesta media se vuelve **más extrema** en la dirección que ya era dominante antes de la discusión.
+]
+
+.card.card-blue[
+**Experimento de Moscovici y Zavalloni (1969)**
+
+- Midieron actitudes sobre De Gaulle y sobre los americanos
+- Pretest individual → discusión grupal → postest individual
+- Resultado: actitudes favorables se hicieron **más favorables**; actitudes desfavorables, **más desfavorables**
+- Conclusión: la interacción grupal actúa como **polarizador de actitudes**
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Explicaciones de la Polarización
+
+.three-col[
+.card.card-blue[
+**Teoría de la Comparación Social** _(Festinger, 1954)_
+
+Influencia **normativa**: queremos presentarnos de forma socialmente deseable y aventajar al promedio del grupo.
+
+Mecanismos:
+- *Ignorancia pluralista*
+- *Subirse al carro ganador*
+]
+
+.card.card-orange[
+**Argumentación Persuasiva** _(Burnstein & Vinokur, 1975)_
+
+Influencia **informativa**: la polarización surge del intercambio de argumentos **nuevos y válidos** que apoyan la postura dominante.
+
+→ Sin novedad, no hay polarización.
+]
+
+.card.card-green[
+**Autocategorización** _(Tajfel & Turner)_
+
+Influencia **informativa referencial**: los miembros se conforman a la norma del **endogrupo**, que maximiza diferencias con el exogrupo.
+
+→ La polarización es conformidad con el prototipo grupal.
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## 2. El Sesgo de Información Compartida
+
+.definition-box[
+**Paradigma del Perfil Oculto (Stasser & Titus, 1985)**
+
+Cuando la información está **distribuida entre los miembros** de forma que ninguno tiene el panorama completo, la discusión grupal tiende a girar solo en torno a la información que **todos ya conocen**, ignorando la información única de cada miembro.
+]
+
+.two-col[
+.card.card-blue[
+**Experimento original**
+
+- Grupos de 4 personas eligen al mejor candidato estudiantil
+- La información estaba distribuida estratégicamente con "perfil oculto"
+- Si todos compartían su info única → Candidato A era claramente el mejor
+- **Resultado:** Los grupos ignoraban la info única y elegían candidatos inferiores
+]
+
+.card.card-orange[
+**¿Por qué ocurre?**
+
+1. Ventaja probabilística: la info compartida tiene más probabilidad de ser mencionada
+2. Sesgo cognitivo: se evalúa más favorablemente la info consistente con preferencias iniciales
+3. Comparación social: la info compartida parece más válida y confiable (Wittenbaum et al., 2004)
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## ¿Qué reduce el sesgo del perfil oculto?
+
+<br>
+
+.three-col[
+.card.card-blue[
+**Características de la información**
+
+- Resaltarla visualmente (negrita)
+- Usar imágenes en lugar de texto
+- Enfatizar información negativa
+- Tareas jerárquicas (ordenar) vs. binarias (sí/no)
+]
+
+.card.card-orange[
+**Estructura del grupo**
+
+- Grupos más grandes (6 personas) mencionan más info única
+- Normas de **evaluación crítica** vs. normas de consenso
+- Expertos reconocidos con estatus claro
+- Miembros de alto estatus → mencionan más info única
+]
+
+.card.card-green[
+**Variables temporales**
+
+- Más tiempo en preconsenso para recordar
+- Menor presión temporal en la discusión
+- Acceso a material adicional durante la discusión
+- Formación previa anti-sesgos (Larson et al., 1994)
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## 3. El Pensamiento Grupal (*Groupthink*)
+
+.two-col[
+.definition-box[
+**Irving Janis (1972):**
+
+Modo de pensar donde la búsqueda de consenso se vuelve tan dominante en un grupo cohesivo que suprime la evaluación realista de alternativas.
+
+> _"Los grupos que cometieron los fiascos fueron víctimas de lo que yo llamo 'pensamiento grupal'"_ — Janis, 1971
+]
+
+.card.card-red[
+**Casos históricos analizados por Janis**
+
+- 🔴 Ataque a Pearl Harbor (1941)
+- 🔴 Guerra de Corea — cruce del paralelo 38 (1950)
+- 🔴 Invasión de Bahía de Cochinos (1960)
+- 🔴 Escalada en Vietnam (1964-1967)
+- 🔴 Escándalo Watergate (1970s)
+
+_"¿Cómo pudimos ser tan estúpidos?"_ — Kennedy tras Bahía de Cochinos
+]
+]
+
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Limitaciones sociales en la Toma de Decisiones
+
+*Irving Janis (1989) identifica tres tipos de constricciones:*
+
+<br>
+
+.three-col[
+.card.card-blue[
+**Limitaciones cognitivas**
+
+Miembros incapaces de procesar toda la información relevante.
+
+Estrategias que usan:
+- *Satisfacer*: eligen la primera alternativa aceptable
+- *Reafirmarse*: se convencen de que es la única opción posible
+]
+
+.card.card-orange[
+**Limitaciones afiliativas**
+
+Deseo de mantener armonía grupal → sumisión a presiones del grupo.
+
+Estrategia frecuente:
+- *Cover-your-ass* (CYA): evitar introducir info nueva para no entrar en conflicto con miembros influyentes
+]
+
+.card.card-red[
+**Limitaciones egocéntricas**
+
+Algún miembro desea controlar las decisiones → subestima y critica ideas de los demás.
+
+Ejemplo: Nixon y el encubrimiento de Watergate (Wicker, 1990)
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Técnicas para mejorar la toma de decisiones grupal
+
+<br>
+
+| Técnica | Descripción | Ventaja principal |
+|---------|-------------|-------------------|
+| **Brainstorming** (Osborn) | Generación libre de ideas sin crítica; todas se registran | Maximiza cantidad y diversidad de ideas |
+| **Técnica del Grupo Nominal** | Cada miembro escribe ideas individualmente, luego se comparten y votan | Reduce dominancia de ciertos miembros |
+| **Técnica Delphi** | Cuestionarios iterativos sin reunión presencial hasta lograr consenso | Elimina efectos de presión social |
+| **Técnica Gordon** | Solo el líder conoce el problema; se trabaja con pistas | Facilita soluciones creativas |
+
+<br>
+.footnote-small[
+Gouran & Hirokawa (1983, 1996); Janis (1982)
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Resumen: Perspectivas sobre toma de decisiones grupal
+
+<br>
+
+| Perspectiva | Foco | Mecanismo clave |
+|-------------|------|-----------------|
+| **Teoría Funcional** (Gouran & Hirokawa) | Proceso de decisión | Fases estructuradas + comunicación fluida |
+| **Combinación Social** (Davis) | Preferencias individuales | Esquemas de decisión (mayoría, unanimidad) |
+| **Polarización Grupal** (Moscovici) | Intensificación de actitudes | Comparación social / argumentación persuasiva |
+| **Perfil Oculto** (Stasser & Titus) | Flujo de información | Muestreo sesgado hacia info compartida |
+| **Pensamiento Grupal** (Janis) | Cohesión y consenso | Supresión del pensamiento crítico |
+
+
+---
+class: inverse, left, middle, bg_cooperacion
+
+# Cooperación Grupal
+## Del dilema social a la acción colectiva
+
+
+---
+class: inverse, center, middle
+
+# PARTE 1: Los Dilemas Sociales
+
+---
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("clase5_files/public_goods_game.png")
+```
+
+
+---
+
+```{r, fig.align='center', out.width="70%"}
+knitr::include_graphics("clase5_files/public_goods_2.png")
+```
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## El Dilema de los Comunes
+
+.two-col[
+.definition-box[
+**Garrett Hardin (1968) — "The Tragedy of the Commons"**
+
+Imagine un campo de pastoreo abierto. Cada pastor tiene incentivos para **agregar una vaca más** porque:
+
+- El beneficio (+1 vaca) es **individual**
+- El costo del sobrepastoreo es **compartido** entre todos
+
+Cada individuo actuando racionalmente lleva al grupo a la ruina colectiva.
+
+> _"La libertad en un bien común lleva a la ruina para todos"_ — Hardin
+]
+
+.card.card-blue[
+**Estructura del problema**
+
+- Recurso de uso común (*common-pool resource*)
+- Bien rival (el uso reduce disponibilidad)
+- Sin exclusión (difícil excluir usuarios)
+- Costo del sobreuso = **externalidad** distribuida
+
+**Ejemplos reales:**
+- Colapso del bacalao en Terranova (1990s)
+- Sobreexplotación de acuíferos
+- Tráfico y contaminación urbana
+- Crisis climática
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## El legado de Hardin y la respuesta de Ostrom
+
+.two-col[
+.warning-box[
+**El diagnóstico pesimista de Hardin**
+
+- Sin regulación externa → sobreexplotación inevitable
+- Solución: *privatización* o *regulación estatal*
+- Visión del homo economicus racional y egoísta
+
+**Pero Hardin estaba equivocado en la historia:** Las praderas medievales tenían reglas complejas de gestión local. No eran de libre acceso.
+]
+
+.success-box[
+**Elinor Ostrom — Premio Nobel de Economía 2009**
+
+Estudió comunidades reales (Etiopía, Amazonía, Filipinas) que gestionaban sus comunes de forma sostenible **sin** privatización ni Estado.
+
+Sus **8 principios de diseño** para gobiernos exitosos de los comunes:
+- Límites claros
+- Reglas adaptadas al contexto local
+- Participación en las reglas
+- Monitoreo efectivo
+- Sanciones graduales
+- Mecanismos de resolución de conflictos
+- Reconocimiento externo
+- Gestión anidada
+
+_(Ostrom, 1990, "Governing the Commons")_
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Juego de bienes públicos
+
+.definition-box[
+**El Juego de Bienes Públicos (Voluntary Contribution Mechanism — VCM)**
+
+En grupos de 3-6 personas, cada jugador recibe una dotación y puede:
+1. Guardar parte para sí mismo
+2. Contribuir al "fondo común"
+
+El fondo se **multiplica** por un factor (>1 pero <nº miembros) y se reparte equitativamente.
+
+**El dilema:** Contribuir es bueno para el grupo pero costoso para el individuo. La estrategia egoísta dominante = no contribuir (free riding)
+]
+
+.highlight-box[
+📊 **Hallazgo central en economía experimental:**
+
+En la primera ronda, la cooperación típicamente se sitúa en **40-60% del máximo posible**. Sin embargo, en juegos repetidos, la cooperación **declina consistentemente** hacia el equilibrio Nash (Fehr & Gächter, 2000)
+]
+
+---
+class: inverse, center, middle
+
+# PARTE 2: Tipos de Cooperadores
+
+## Economía experimental y preferencias sociales
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Los tres tipos principales de cooperadores
+
+
+.three-col[
+.card.card-green[
+### Cooperadores Incondicionales
+
+Contribuyen cantidades **altas y estables** independientemente de lo que hagan los demás.
+
+- No responden a la conducta de otros
+- Son relativamente raros (~10-15%)
+- Pueden sostener la cooperación temporalmente en grupos con free riders
+- Pero frecuentemente son "explotados"
+
+_Su presencia en la red ralentiza el colapso de la cooperación_
+]
+
+.card.card-blue[
+### Cooperadores Condicionales
+
+**Contribuyen más cuando otros contribuyen más**, y menos cuando los demás contribuyen menos.
+
+- El tipo más frecuente (~50%)
+- Exhiben un **sesgo de autoservicio**: contribuyen *un poco menos* que el promedio del grupo
+- Sensibles a señales sociales y normas
+- Son la clave del dinamismo cooperativo
+
+_(Fischbacher & Gächter, 2010)_
+]
+
+.card.card-red[
+### Free Riders
+
+Contribuyen **cero** independientemente de lo que hagan los demás.
+
+- ~25-30% de la población experimental
+- Estrategia racional bajo supuesto de homo economicus
+- Su presencia hace **colapsar** la cooperación entre cooperadores condicionales
+- Un solo free rider en un grupo puede contagiar el colapso cooperativo
+
+_(de Oliveira et al., 2015)_
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## ¿Por qué colapsa la cooperación?
+
+.two-col[
+.definition-box[
+**La dinámica del declive (Fischbacher & Gächter, 2010)**
+
+1. En la primera ronda hay cooperación moderada
+2. Los cooperadores condicionales notan que los free riders no contribuyen
+3. Los condicionales **reducen** su contribución (_self serving bias_)
+4. Esto reduce el promedio del grupo
+5. Otros condicionales responden bajando su contribución
+6. Espiral descendente hacia el **equilibrio de no-cooperación**
+
+> Incluso sin free riders, la cooperación se erosiona porque los condicionales contribuyen un poco *menos* que el promedio esperado
+]
+
+.warning-box[
+**Implicación clave:**
+
+La composición del grupo importa más que las reglas del juego.
+
+Un grupo de:
+- **Solo cooperadores condicionales** → cooperación alta pero inestable
+- **Mayoría condicionales + algunos free riders** → colapso gradual
+- **Condicionales + cooperadores incondicionales** → cooperación más estable
+
+La presencia de un único free rider actúa como "manzana podrida" _(de Oliveira et al., 2015)_
+]
+]
+
+---
+class: inverse, center, middle
+
+# PARTE 3: ¿Qué hace que la gente coopere?
+
+## Mecanismos de la acción colectiva
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Mecanismo 1: El Castigo Altruista
+
+.two-col[
+.definition-box[
+**Fehr & Gächter (2000, 2002) — American Economic Review**
+
+En experimentos de bienes públicos con opción de castigar:
+
+- Los participantes **pagan** para reducir los pagos de los free riders
+- Esto es *altruista* porque es costoso para quien castiga y no hay beneficio económico directo
+- El castigo **no es racional** bajo el supuesto de homo economicus
+
+**Resultado clave:** Cuando hay opción de castigo, la cooperación **se mantiene alta** e incluso aumenta con el tiempo. Sin castigo → cooperación declina.
+
+_(Gächter, Renner & Sefton, 2008 — Science)_
+]
+
+.card.card-orange[
+**Tipos de castigo observado:**
+
+🟢 **Castigo de segundo orden** (altruista): Personas que castigan a free riders aunque no sean miembro del mismo grupo → norma moral generalizada
+
+🔴 **Castigo antisocial**: Algunas culturas muestran castigo a los *cooperadores* por parecer "demasiado buenos" (Herrmann et al., 2008 — *Science*)
+
+**Varía entre culturas:**
+- Países nórdicos y anglosajones: poco castigo antisocial
+- Algunos países de Europa del Este y Medio Oriente: más castigo antisocial
+]
+]
+---
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("clase5_files/cooperation.jpeg")
+```
+
+---
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("clase5_files/cooperation_punishment.jpeg")
+```
+
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Mecanismo 2: Monitoreo (Monitoring)
+
+.two-col[
+.definition-box[
+**El papel de la observabilidad**
+
+La cooperación aumenta cuando los individuos saben que son observados. 
+
+Tres mecanismos:
+1. **Reputación:** El comportamiento observable permite construir historial de confiabilidad → cooperación futura más probable
+2. **Reciprocidad directa:** En juegos repetidos, el monitoreo activa la estrategia "tit-for-tat" (Axelrod, 1984)
+3. **Presión social:** La observación activa normas de comportamiento apropiado
+
+_(Fehr & Fischbacher, 2002)_
+]
+
+.card.card-blue[
+**Evidencia experimental**
+
+- **Juegos con identidad visible:** Los participantes cooperan más cuando son identificables que cuando son anónimos
+- **Experimento de la caja de donativos (Haley & Fessler, 2005):** La simple presencia de ojos (imagen de ojos) en la caja de café honorífico aumenta las contribuciones
+- **Field experiment (Gneezy & Rustichini, 2000):** La vigilancia en guarderías para retirada puntual → introducir multa *redujo* la puntualidad (crowding out de la motivación intrínseca)
+
+⚠️ Monitoreo + sanción externa puede **desplazar** la motivación intrínseca
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Mecanismo 3: Liderazgo
+
+.two-col[
+.definition-box[
+**Los líderes como catalizadores de cooperación**
+
+Tres vías por las que el liderazgo afecta la cooperación grupal:
+
+1. **Contribución ejemplar** (*leading by example*): Los líderes que contribuyen primero señalan la norma esperada. Los seguidores responden aumentando sus contribuciones (Güth et al., 2007)
+
+2. **Coordinación:** El líder reduce la incertidumbre sobre qué se espera → facilita equilibrios cooperativos (teoría de la selección de equilibrios)
+
+3. **Gestión del recurso común:** En experimentos de comunes, grupos que **eligen** a un líder democrático conservan mejor el recurso que grupos sin liderazgo o con liderazgo impuesto
+]
+
+.card.card-green[
+**Evidencia experimental**
+
+- **Fischbacher & Gächter (2010):** Los líderes que contribuyen en el primer período predicen el nivel de cooperación del grupo en los períodos siguientes
+- **Experimento de dilema de comunes (Hardin):** Las comunidades con líderes *electos* y *representativos* del grupo gestionan mejor el recurso que aquellas con líderes impuestos
+- **Charness & Holder (2019):** El tipo de liderazgo importa: el liderazgo que define el *proceso* de decisión es mejor predictor de calidad que el liderazgo que favorece un *resultado* específico
+
+→ Líderes democráticos y prototípicos del grupo son más efectivos (Ostrom, 1990)
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Mecanismo 4: Identidad Social
+
+.two-col[
+.definition-box[
+**Charness & Chen (2020) — Annual Review of Economics**
+
+La pertenencia grupal afecta las preferencias sociales de forma predecible:
+
+- Los participantes muestran un **47% más** de preocupación caritativa (charity) y un **93% menos** de envidia cuando interactúan con miembros del **endogrupo**
+- Son un **19% más** propensos a recompensar comportamiento positivo de un miembro intragrupo
+- Son un **13% menos** propensos a castigar a un miembro intragrupo por comportamiento negativo
+
+_(Chen & Li, 2009)_
+]
+
+.card.card-purple[
+**Mecanismos de la identidad social en cooperación**
+
+🔵 **Team building:** Incluso actividades grupales breves (resolver un puzzle juntos) aumentan significativamente la cooperación posterior → Charness et al. (2014)
+
+🔵 **Competición entre grupos:** La competición intergrupal aumenta la cooperación *intragrupal*, incluso más que incentivos monetarios individuales → Bornstein et al. (2002)
+
+🔵 **Identidad compartida:** Primar una identidad común (vs. identidad fragmentaria/étnica) aumenta la coordinación y la cooperación en juegos experimentales → Chen et al. (2014)
+
+→ *"¡Wir schaffen das!"* (Angela Merkel, 2015) como ejemplo de activación de identidad colectiva
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Identidad Social y Equipos: Evidencia de Campo
+
+.two-col[
+.success-box[
+**Experimento Kiva — Ai et al. (2016)**
+
+Plataforma de microcréditos online. Experimento con emails de recomendación de equipos:
+
+- Unirse a un equipo **aumenta los préstamos** en la semana siguiente a la intervención
+- Los prestamistas prefieren unirse a equipos según **similitud geográfica** antes que por estatus del equipo
+- El equipo activa normas de **responsabilidad colectiva**
+
+_(PNAS, 113(52), 14944–48)_
+]
+
+.success-box[
+**Experimento DiDi — Ai et al. (2019)**
+
+Conductores de ride-sharing asignados aleatoriamente a equipos competitivos:
+
+- Los conductores en equipos trabajaron **más horas** y ganaron un **12% más** de ingresos durante el concurso
+- Efecto mayor (+19%) en equipos **más comunicativos y responsivos**
+- Los conductores en equipos responsivos continuaron ganando más **dos semanas después** del concurso
+
+→ La identidad organizacional mejora el rendimiento en la *gig economy*
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Mecanismo 5: Normas Sociales
+
+.two-col[
+.definition-box[
+**¿Qué son las normas sociales?**
+
+Expectativas compartidas sobre el comportamiento apropiado, cuyo incumplimiento genera desaprobación social.
+
+**Distinción clave:**
+- **Normas descriptivas:** Lo que la mayoría hace (*"todos lo hacen"*)
+- **Normas injuntivas:** Lo que se *debería* hacer (*"así se debe actuar"*)
+
+_(Cialdini & Trost, 1998; Bicchieri, 2006)_
+]
+
+.card.card-orange[
+**Evidencia experimental sobre normas**
+
+🟠 **Prueba de rascacielos (Krupka & Weber, 2013):** El método de coordinación permite elicitar normas de forma incentivo-compatible. Las normas predicen el comportamiento en juegos de dictador mejor que las preferencias individuales aisladas
+
+🟠 **Efecto del lenguaje (Chang et al., 2019):** Etiquetar el mismo juego como "Wall Street Game" vs. "Community Game" activa distintas normas y cambia significativamente el comportamiento cooperativo
+
+🟠 **Normas y castigo altruista:** La indignación moral ante la violación de normas (y no solo el interés propio) es el motor del castigo en experimentos → personas castigan a desconocidos en juegos no repetidos
+]
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Normas sociales: el efecto del contexto cultural
+
+.definition-box[
+**Herrmann, Thöni & Gächter (2008) — _Science_, 319(5868)**
+
+El estudio más grande de castigo en bienes públicos: 16 ciudades de todo el mundo.
+
+**Hallazgo principal:** El nivel de cooperación y el tipo de castigo varía enormemente entre culturas.
+]
+
+.two-col[
+.card.card-green[
+**Países con baja norma de castigo antisocial**
+
+- Países nórdicos, Alemania, Australia, EE.UU.
+- Normas cívicas fuertes
+- Bajo castigo antisocial (castigar a cooperadores)
+- Alta cooperación sostenida con mecanismo de castigo
+]
+
+.card.card-red[
+**Países con alta norma de castigo antisocial**
+
+- Algunos países de Europa del Este, Grecia, Arabia Saudita
+- El castigo antisocial *compensa* el castigo altruista
+- La cooperación **no mejora** con el mecanismo de castigo
+- Sugiere que las normas de reciprocidad negativa varían culturalmente
+]
+]
+
+.footnote-small[
+Esto cuestiona universalidad del modelo de preferencias sociales → las normas culturales moderan los mecanismos de cooperación.
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Resumen: ¿Qué favorece la cooperación grupal?
+
+<br>
+
+| Mecanismo | Experimento clave | Efecto principal |
+|-----------|------------------|-----------------|
+| **Castigo altruista** | Fehr & Gächter (2000) _AER_ | Sostiene contribuciones; previene free riding |
+| **Monitoreo / visibilidad** | Haley & Fessler (2005) | Activa normas de comportamiento apropiado |
+| **Liderazgo por ejemplo** | Güth et al. (2007) | Los seguidores imitan la contribución del líder |
+| **Identidad social intragrupal** | Chen & Li (2009) _AER_ | +47% caridad, -93% envidia hacia el endogrupo |
+| **Equipos con competición** | Bornstein et al. (2002) | Cooperación intragrupal aumenta bajo competición |
+| **Normas sociales (priming)** | Chang et al. (2019) | El framing activa normas que cambian la conducta |
+| **Comunicación** | Ostrom et al. (1992) | Permite construir compromisos y señales de confianza |
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## ¿Qué puede inhibir la cooperación?
+
+.three-col[
+.card.card-red[
+**El problema del free rider**
+
+Un solo free rider en un grupo puede hacer colapsar la cooperación de los cooperadores condicionales.
+
+_de Oliveira, Croson & Eckel (2015)_
+]
+
+.card.card-red[
+**Sanción externa que desplaza motivación**
+
+Introducir incentivos monetarios puede sustituir la motivación intrínseca (*crowding out*).
+
+_Gneezy & Rustichini (2000)_
+]
+
+.card.card-red[
+**Normas antisociales**
+
+En culturas con normas de reciprocidad negativa fuerte, el castigo altruista no aumenta la cooperación.
+
+_Herrmann et al. (2008)_ 
+]
+]
+
+<br>
+
+.highlight-box[
+🔑 **La cooperación no es un rasgo estático:** Es dinámica, sensible al contexto, a las normas, a la composición del grupo y a los mecanismos institucionales que la rodean.
+]
+
+
+---
+class:inverse, middle, left
+
+# Agresividad
+## Factores sociales y mecanismos de medición
+
+
+
+---
+class: center, middle, bg_karl
+background-image: url(https://www.arabnews.pk/sites/default/files/styles/n_670_395/public/2020/01/17/1933236-970935554.jpeg?itok=qTNKgTxl)
+background-size: 1350px
+background-position: 1% 20%
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+class: left, middle, big_karl
+
+## ¿Qué es una agresión?
+
+--
+
+.pull-left[
+
+>_"Comportamiento físico o verbal cuya intenciòn es dañar a alguien"_
+
+
+]
+
+.pull-right[
+
+- Intención de electrocutar
+- Quitar o quemar dinero
+- Chismes
+
+<br>
+
+- ¡Debe ser intencional!
+
+
+]
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 5% 95%
+class: left, middle
+
+## Agresión desde su ámbito de desgliegue
+
+.pull-left[
+
+**Agresión física:** Comportamiento beligerante centrado en atacar a la pèrsona, sus bienes, expectativas
+
+
+]
+
+
+.pull-right[
+
+**Agresión social:** Daño a una persona que implica la percepción o consecuencias con otros
+
+ejemplos: Chismes, ciberacoso, acoso directo, aislación social.
+
+
+]
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 5% 95%
+class: left, middle
+
+## Agresión desde sus fines
+
+.pull-left[
+
+**Agresión hostil:** Agresión física con el único o principal motivo de dañar
+
+ejemplo: acoso, VIF
+
+]
+
+
+.pull-right[
+
+**Agresión instrumental:** Agresiones que se realizan porque se percibe un beneficio gracias a ellas
+
+ejemplos: Luchas por status, terrorismo.
+
+
+]
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, top
+
+# Evolución y agresión
+
+
+.pull-left[
+
+```{r, fig.align='center'}
+knitr::include_graphics("https://s.movieinsider.com/images/p/600//175325_m1406377115.jpg")
+```
+
+
+]
+
+
+.pull-right[
+
+- Agresión como rasgo evolutivo
+- Permanece como un comportamiento para obtener recursos
+- No es una anomalía individual
+
+]
+
+
+---
+class: inverse center middle
+
+## Factores sociales que facilitan la agresión
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, top
+
+## Aprendizaje social (Bandura)
+
+
+--
+
+- El comportamiento agresivo se puede aprender y socializar
+
+- La exposición a la violencia hace que se vuelva un patrón suceptible de seguir
+
+- Genera una respuesta de _modelado_ e _imitación_
+
+- Comportamiento es más propenso a ser seguido si se es adulto y se observa beneficio al realizarlo (REFUERZO VICARIO)
+
+
+
+
+
+---
+class: middle, center
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u9Kz3jSJR7s?si=-2DXB1mPcbiAB_Eo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, top
+
+# Presencia de elementos de violencia
+
+--
+
+* Las personas que viven en entornos con "señales de agresión" tienen más propensión a la agresividad
+* Señales de agresión: elementos que interpretamos para dañar
+* Presencia señales de agresión liberal enojo reprimido
+
+
+-- 
+
+>_"Las armas no sólo permiten la violencia, sino que pueden estimularla. 
+El dedo tira el gatillo, pero el gatillo también puede empujar el dedo"_ (Leonard Berkowitz)
+
+
+---
+class: left, middle
+.pull-left[
+
+```{r, fig.align='center', out.width="90%"}
+knitr::include_graphics("https://cdn2.psychologytoday.com/assets/styles/manual_crop_4_3_1200x900/public/field_blog_entry_teaser_image/2021-03/picture1.png.jpg?itok=QH14UJuW")
+```
+
+
+]
+
+
+.pull-right[
+
+- Experimento de Berkowitz y Page de agresividad (1967)
+- Un participante conocía a un confederado y lo hacía enojar
+- Se le pedía luego a las personas que decidieran cuántas descargas eléctrica le daría a esa persona
+- Grupo tratamiento se les dejaba un rifle y una pistola en la mesa "por error"
+- Grupo control se dejaba una raqueta de tenis y badminton
+- Quienes tenían rifles en la mesa aumentaron significativamente el nivel de descarga eléctrica
+
+]
+
+--
+
+Otro experimento: Manejar con armas aumenta la conducción riesgosa
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, top
+
+## Exposición a los medios
+
+- Desde los años 80's se ha estudiado cómo los medios de comunicación inciden en el comportamiento agresivo
+- Se ha observado que niños expuestos a noticias violentas, aumenta su agresividad incluso en edad adulta
+- Los hallazgos son significativos, pero un tamaño del efecto pequeño
+- Otras agresiones como el chismoceo y, traición y exlclusión también ocurren, sobre todo en mujeres
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, middle
+
+
+.pull-left[
+
+- Experimento de Dillon y Bashman (2017) sobre efectos de películas
+- Niños de 8 a 12 años ven 20 min de una película. unos ven con utilización de armas, y en otra se escondía.
+- Cada grupo luego iba a jugar a una sala donde habían legos, pistolas Nerf, **y en un cajón un revolver de 9mm deshabilitado**
+- El revolver no podía disparar, pero contabilizaba cuántas veces apretaban el gatillo
+- El 42% de los niños tomó el arma
+- Los que vieron el film sin arma, casi ninguno disparó
+- Quienes vieron el film con armas, ¿Dispararon?
+
+]
+
+
+
+.pull-right[
+
+```{r, fig.align='center'}
+
+knitr::include_graphics("clase5_files/oft9p6fepz6ghicnh3melgge42bvvcqin8ihooyiey8lumuvncbbkwew1dr4cakq.png")
+
+```
+
+]
+
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 97%
+class: middle, left
+
+## Multitud
+
+.pull-left[
+
+
+- Objeto de estudio de moda de finales de S.XIX
+- Énfasis en análisis de estallidos violentos, pánico masivo y otras transformaciones radicales
+- Gustave Le Bon y _Psicología de las masas_
+- Clases populares en la vida política implicó el ingreso de _multitudes_
+- Multitud presiona con demandas sociales
+- "Derecho divino de las multitudes"
+
+
+]
+
+
+.pull-right[
+
+```{r, fig.align='center', out.width="90%", echo=FALSE}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/5/5e/Gustave_Le_Bon.jpg")
+```
+
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 97%
+class: left, middle
+
+## Pilares de la multitud
+
+- **Anonimato**
+
+--
+
+Provoca que las personas se vuelvan más impulsivas por sobre las normas civilizatorias
+
+--
+
+- **Contagio emocional**
+
+--
+
+Las personas se contagian entre sí en una cadena de emociones hacia el comportamiento
+
+--
+
+- **Desvanecimiento de personalidad consciente**
+
+--
+
+Personalidad se funde bajo la influencia de la multitud - Proceso de sugestión inconsciente
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, top
+
+# Mecanismos de medición de agresión
+
+<br>
+<br>
+<br>
+
+Experimento                        | Fenómeno que estudia         
+-----------------------------------|------------------------------------
+Paradigma de agresividad de taylor | Formación de normas sociales 
+PSAP                               | Presión social en el comportamiento
+Joy of Destruction Game            | Obediencia a la autoridad
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+class: left, middle
+
+## Paradigma de agresividad de taylor
+
+- Creado en los años 50, cuando no habían medidas confiables de agresividad
+- Tarea es simple: se juega en parejas, y las personas deciden cuánta descarga eléctrica le darían a su compañero de juego
+- Luego de la decisión, cumplen una tarea de reacción a luz, presionando un botón
+- El que pierde, recibe la descarga que decidió el compañero
+
+--
+
+Actualmente se utiliza como tarea computalizada contra una pareja ficticia. Se mide la agresión como el nivel de gravedad del daño que le inflinjes
+
+- Se usan descargas con electrodos o explosiones de ruido.
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 5% 95%
+class: left, middle
+
+### Point Substraction Agression Paradigm game (PSAP)
+
+
+.pull-left[
+
+- Juego para medir agresividad en conflicto intergrupal simulado
+- Ganará el equipo que más puntos tenga en total x ronda.
+
+
+- ¿Cómo gano puntos? presionando el botón "A" ($300CLP x pto)
+- **Pero otras personas pueden robar tus puntos**
+- Ante eso puedes responder:
+  * Quitándole puntos al adversario
+  * Defendiendo tus puntos
+]
+
+
+.pull-right[
+
+```{r}
+knitr::include_graphics("clase5_files/psap.jpg")
+```
+
+]
+
+--
+
+**Si el grupo gana, se le dará un pago de sus puntos individuales ganados + la mitad de los puntos robados del otro grupo en una ronda aleatoria (máx. $8000CLP)**
+
+<font size="-3">Geniole, S. N., MacDonell, E. T., & McCormick, C. M. (2017). The Point Subtraction Aggression Paradigm as a laboratory tool for investigating the neuroendocrinology of aggression and competition. Hormones and Behavior, 92, 103-116.</font>
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Joy of Destruction Game
+
+>El "Joy of Destruction Game" es un experimento económico diseñado para estudiar comportamientos destructivos y la disposición de los individuos a reducir las ganancias de otros sin obtener ningún beneficio personal.
+
+## Método:
+
+1. Participantes: Los participantes se emparejan al azar.
+2. Dotación Inicial: Cada participante recibe una dotación inicial de dinero.
+3. Decisión: Cada participante puede elegir destruir parte de la dotación del otro participante a un costo para sí mismo.
+4. Costo: La destrucción tiene un costo para el que destruye, pero no ofrece ningún beneficio personal directo.
+
+Otras versiones han buscado agregar costo apra el que quita, hacer versiones "escondidas" y "públicas", y ver los efectos grupales vs individuales
+
+
+---
+background-image:url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+## Ejemplo de uso del JOD
+
+
+.pull-left[
+
+```{r, out.width="95%", fig.align='left'}
+knitr::include_graphics("clase5_files/social_contagion.png")
+```
+
+]
+
+
+.pull-right[
+
+- La Agresión es el mecanismo que implica competir por bienes escasos
+- Hostilidad aumenta en conflictos intergrupo 
+- Contagio de la agresión observando a personas del mismo grupo
+- "Individuos clave" Inician la violencia y reducen costos al resto
+- Líderes dominantes pueden aumentar y/o coordinar agresividad
+
+]
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 97% 97%
+class: center, middle
+
+## Comportamiento antisocial en grupos
+
+
+.pull-left[
+
+
+```{r, fig.align='center'}
+
+knitr::include_graphics("clase5_files/nastriness_group1.png")
+
+```
+
+
+]
+
+--
+
+.pull-right[
+
+```{r, fig.align='center'}
+
+      knitr::include_graphics("clase5_files/nastiness_group2.png")
+
+```
+
+
+]
+
+Decisiones para experimentos en agresividad grupal
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 97% 97%
+class: left, middle
+
+## Duración de la tarea
+
+
+* Una tarea experimental puede ser larga
+* Si quiero medir agresión en el tiempo, esto podría ser un problema
+* PSAP: 50min, 25 min, 10 min. ¿Puede usarse menos?
+* Tareas con tiempo específico requieren validción especial
+* J.O.D game: No tiene duración específica, sino que es sólo el tiempo que demoran en decidir
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 97% 97%
+class: left, middle
+
+## Temas de ética
+
+
+* Agresión no es trivial. Puerde implicar daños posteriores
+* Difícil que un comité de ética acepte un experimento como el de Dillon y Bushman
+* Otro tema ético: el engaño intergrupal
+
+
+- Con un buen diseño y análisis de posibles daños, debería ser aprobado
+
+
+
+---
+background-image: url(clase5_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 97% 97%
+class: left, middle
+
+## ¿La agresión es el único camino posible?
+
+
+* Varios paradigmas de agresión han sido criticados porque no le dejan otra alternativa a las personas
+* Un buen experimento de agresión debería considerar alternativas no agresivas
+* PSAP la considera. el juego original del J.O.D no, pero se ha ido integrando
+
+
+---
+class: inversed, center, middle
+background-image: url(https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png)
+background-size: 80px
+background-position: 50% 90%
+
+# ¡Gracias!
+
+
+fvillarroelr@udd.cl
+
+Slide creado con el paquete [**xaringan**](https://github.com/yihui/xaringan).
+
+
+El  chakra viene de [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), y [R Markdown](https://rmarkdown.rstudio.com).
+Este slide fue creado por [**xaringan**](https://github.com/yihui/xaringan) y [**XaringanThemer**](https://pkg.garrickadenbuie.com/xaringanthemer/index.html)
