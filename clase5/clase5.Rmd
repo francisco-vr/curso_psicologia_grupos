@@ -781,7 +781,7 @@ knitr::include_graphics("clase5_files/cooperation.jpeg")
 
 ---
 
-```{r, out.width="80%", fig.align='center'}
+```{r, out.width="60%", fig.align='center'}
 knitr::include_graphics("clase5_files/cooperation_punishment.jpeg")
 ```
 
