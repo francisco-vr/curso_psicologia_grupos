@@ -1,0 +1,967 @@
+---
+title: "Toma de Decisiones en Grupo"
+author: 
+  - "Francisco Villarroel Riquelme"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+    seal: false
+---
+class: left, middle, bg_decisiones
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#1a5276",
+  secondary_color = "#2e86c1",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+```{css, echo=F}
+.bg_decisiones {
+  position: relative;
+  z-index: 1;
+}
+.bg_decisiones::before {
+  content: "";
+  background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1400');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px; right: 0px; bottom: 0px; left: 0px;
+  opacity: 0.20;
+  z-index: -1;
+}
+.definition-box {
+  background: #eaf2fb;
+  border-left: 5px solid #1a5276;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 10px 0;
+  font-size: 0.88em;
+}
+.highlight-box {
+  background: #fef9e7;
+  border: 2px solid #f39c12;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.warning-box {
+  background: #fdedec;
+  border-left: 5px solid #e74c3c;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(26,82,118,0.12);
+  font-size: 0.84em;
+}
+.card-blue { border-top: 4px solid #1a5276; }
+.card-orange { border-top: 4px solid #e67e22; }
+.card-red { border-top: 4px solid #c0392b; }
+.card-green { border-top: 4px solid #1e8449; }
+.badge {
+  display: inline-block;
+  background: #1a5276;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78em;
+  font-weight: bold;
+  margin-right: 6px;
+}
+.badge-orange { background: #e67e22; }
+.badge-green { background: #1e8449; }
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+.step-num {
+  background: #1a5276;
+  color: white;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 0.9em;
+}
+.footnote-small {
+  font-size: 0.68em;
+  color: #777;
+  border-top: 1px solid #DDD;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+table { font-size: 0.78em; width: 100%; border-collapse: collapse; }
+th { background: #1a5276; color: white; padding: 7px 10px; text-align: left; }
+td { padding: 6px 10px; border-bottom: 1px solid #e0e0e0; }
+tr:nth-child(even) { background: #f5f7fa; }
+blockquote {
+  border-left: 4px solid #f39c12;
+  background: #fef9e7;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #333;
+  margin: 10px 0;
+  font-size: 0.90em;
+}
+```
+
+---
+class: left, middle, bg_decisiones
+
+# Liderazgo: Concepto, mecanismos de influencia y preferencia
+
+## Psicología de los Grupos — Clase 6
+
+
+
+**Francisco Villarroel Riquelme** | `r Sys.Date()`
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 200px
+background-position: 95% 5%
+
+# Objetivos de la clase
+
+.two-col[
+.card.card-blue[
+**¿Qué es el liderazgo?**
+
+- Concepcualización básica
+- ¿Qué son los seguidores?
+- Teorías de liderazgo
+
+
+]
+
+.card.card-orange[
+**Preferencia e influencia**
+
+- Líderes dominantes e igualitarios
+- Factores de preferencia
+- Mecanismos de influencia
+- ¿Pueden los líderes volver más agresivos a sus seguidores?
+- Resultados experimento líderes, comunicación y normas sociales
+]
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 140px
+background-position: 90% 8%
+class: inverse, center, middle
+
+# ¿Qué es ser un lider?
+
+
+---
+
+```{r, out.width="70%", fig.align='center'}
+knitr::include_graphics("clase6_files/Captura de pantalla de 2022-05-26 13-46-17.png")
+```
+
+Hormigas que caminan en tandem hacia recursos, abejas que indican lugares donde es más probable encontrar comida, delfines que marcan patrones en compañeros de grupo y personas que se gradúan.
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 140px
+background-position: 90% 8%
+class: left, middle
+
+
+### Evidencia en animales no-humanos
+
+
+.two-col[
+
+.card-blue[
+
+- Cardúmenes de Luciopercas doradas son liderados por pocos peces más valientes y con más habilidades. existe una proporción de 1 pex hábil a 12 naïves.
+- Elefantes que viven en zonas en sequía aprovechan la memoria de las hembras para lograr ir a otras zonas que conocieron varias décadas atrás.
+- Hormigas más hábiles enseñan a otras hormigas naïves para encontrar el camino a recursos.
+- En primates la evidencia es mayor y tendiente a la dominancia: Gorilas controlan actividades de sus subordinados.
+
+]
+
+
+.card-red[
+
+```{r, out.width="70%", fig.align='center'}
+knitr::include_graphics("clase6_files/babons.png")
+```
+
+]
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+### ¿Qué es ser un líder?
+
+.pull-left[
+
+
+- Liderazgo como "Iniciación a nuevas direcciones de movimiento"
+
+- _Evolutionary Theory of Leadership_ Define liderazgo como:
+
+>"Proceso de influencia social para lograr objetivos compartidos" 
+
+]
+
+--
+
+.pull-right[
+Seguidores buscan:
+
+
+> 1. Un guía en una dirección que evite la dispersión individual 
+> 2. Protección contra amenazas provocadas en conflicto intergrupal
+> 3. Resolución de conflictos intragrupales
+
+
+**Para ello el líder debe tener la habilidad de tomar la iniciativa y coordinar esfuerzos**
+
+]
+
+<br>
+<br>
+<br>
+
+
+.footnote-small[
+<font size="-3">Van Vugt, M., & Ahuja, A. (2011). Naturally selected: The evolutionary science of leadership (1st U.S. ed). HarperBusiness.</font>
+<br>
+<font size="-3">de Waal-Andrews, W., & van Vugt, M. (2020). The triad model of follower needs: Theory and review. Current Opinion in Psychology, 33, 142-147.</font>
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Líderes buscan:
+
+- Coordinar
+- Inspirar
+- Motivar
+
+.warning-box[
+- **Para algunas disciplinas de la psicología**, un lider busca influir para que los seguidores _quieran hacer lo que se les pide_.
+
+- Autoritarismo en liderazgos es poco eficiente a largo plazo
+
+]
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Tipos de teorías de liderazgo
+
+--
+
+
+### Centradas en personalidad, estilo de liderazgo, en los seguidores, en la situación o en el grupo
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+## Liderazgo basado en personalidad
+
+
+.two-col[
+
+.red-card[
+
+- Creencia de que para ser lider se necesitaban cualidades "superiores"
+- Teoría del gran hombre (Carlyle)
+- Héroes tenían inteligencia y saboduría que tuvieron impacto
+- 6 clases de héroes (divididad, poeta, profeta, Rey, etc)
+- Stogdill (1948) hizo una revisión de estudios y consideró que **no hay rasgo universal**
+]
+
+.blue-card[
+
+Sin embargo, House y Aditya (1997) realizan una nueva revisión y:
+
+1. Hay rasgos que son consistentes en líderes (inteligencia, autoconfianza y motivación de logro y poder)
+2. Estos rasgos son más relevantes cuando tienen relación con la tarea por la que el gruop existe
+3. Cuando hay normas o sistemas de incentivos asociados a conductas, es la situación el que prevalece y no los rasgos
+
+]
+]
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+## Enfoques de liderazgo y rasgos:
+
+Estudio del grupo de Ohio establece 150 conductas de liderazgo reducidas en dos grupos
+
+--
+
+.two-col[
+
+.definition-box[
+
+**Iniciación a de estructura:** _planificación del trabajo, la definición de responsabilidades_
+_y, en general, con todas aquellas conductas a través de las cuales el líder guía, estructura_
+_toma parte activa en la realización de la tarea._
+]
+
+
+1. "Me asisgna tareas concretas"
+2. "Me pide que siga los procedimientos"
+
+
+.definition-box[
+
+**Consideración:** _respeto y la_
+_preocupación por el bienestar de los subordinados y con la expresión de apoyo hacia ellos_.
+]
+
+1. “Me trata como un igual”
+2. “Se preocupa por mi bienestar personal”.
+3. “Acepta algunos de los cambios sugeridos por mí”.
+
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Teorías de las contingencia
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+## La Teoría de la Expectativa de Meta
+
+.highlight-box[
+Los líderes serán eficaces en la medida en que sus conductas complementen “el entorno” laboral de sus subordinados y les ayuden a conseguir sus metas laborales o
+personales.
+
+]
+
+--
+
+.two-col[
+
+.green-card[
+
+**Clarificación de tarea**:  + útil cuando cuando roles grupales son ambiguos y - cuando subordinados se consideren competentes
+
+**Conducta orientada al logro**: Líderes + eficientres cuando subordinados tienen alta motivación 
+
+**Facilitadora del trabajo:** Líderes + eficaz cuando trabajo sea previsible y - necesarios si los subordinados son competentes en la tarea
+
+
+
+]
+
+
+.blue-card[
+
+**Apoyo personal**: Líderes + eficaces si trabajo es peligroso, monótono o estresante
+
+
+**Facilitador de interacción**: Cuando son interdependientes líderes son más eficaces
+
+
+**Liderazgo basado en valores**: Eficiente cuando no hay muchas más recompensas o beneficios.
+
+]
+]
+
+--
+
+.highlight-box[ _Dependiendo de la situación, se espera del líder que adopte un tipo u otro de conductas, **que no se consideran rasgos de personalidad, sino estrategias seleccionadas conscientemente**_
+
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: inverse, left, middle
+
+## Teorías enfocadas en los seguidores
+
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:  left, middle
+
+
+## Teoría implícita de liderazgo
+
+
+.highlight-box[
+
+_Las personas, a través de su etapa de socialización y de las experiencias que han tenido con diversos líderes a lo largo de su vida o de su carrera profesional, desarrollan teorías implícitas del liderazgo, es decir, opiniones personales acerca de las características que debe tener un buen líder_
+
+]
+
+Teorías implícitas:
+
+- Conductas o esquemas que los seguidores esperan de sus líderes
+
+- Bases cognitivas para entender y responder a las conductas directivas
+
+- El ajuste entre las conductas del líder y las teorías implícitas de sus seguidores determina en gran medida la percepción y valoración delas conductas del líder
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: inverse, left, middle
+
+
+## Enfoque centrado en relación líder-seguidor
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:  left, middle
+
+
+## Teoría del intercambio líder-miembros (LMX)
+
+.highlight-box[
+
+**Premisa: los líderes desarrollan un tipo de relación diferente con cada uno de los miembros de su grupo y que la calidad de esa relación afecta de forma importante a las actitudes y conductas tanto del líder como del subordinado**
+]
+
+--
+
+- Se ha asumido que líderes se comportan igual con todos los miembros del grupo, _pero no es así_
+- Hay relaciones de buena calidad y de baja calidad
+- Las de buena calidad los seguidores reciben apoyo del líder y rinden más
+- Las de baja calidad hay más ditancia con el lider y hacen lo justo (sino menos)
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Teoría del intercambio líder-miembros (LMX) II
+
+.two-col[
+.red-card[
+
+- Basada en la teoría de intercambio social (Blau, 1964)
+
+- Obligación de reciprocidad en las relaciones que se establecen entre las personas
+
+- Intercambio repetido establece el tipo de relación y roles de trabajo
+
+]
+
+.blue-card[
+
+*¿Qué crítica puede hacerse a esta teoría?*
+
+]
+]
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Identidad social y liderazgo
+
+- EL liderazgo **es un proceso grupal, a veces olvidado**
+
+- Identidad social (Turner) une lider e identidad social
+
+- Líder guía colaboración endogrupal
+
+- Miembros prototípicos emerjan como líderes (encargan identidad social compartida)
+
+- Si el lider encarga mejor la identidad, es más eficiente independiente de todos los rasgos anteriores
+
+
+.highlight-box[
+
+La persona que más influencia ejerce en el grupo será aquella que mejor encarne los valores, creencias y actitudes del grupo en un momento dado, es decir, su miembro más prototípico.
+
+**La labor del lider es gestionar la identidad del grupo**
+
+]
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+## Eficacia de los miembros prototipos dependen de:
+
+1. Influencia: Prototipo de identidad lo vuelve grupo de referencia
+
+2. Atracción social: Ya que encargan valores son + apreciados que el exo grupo y otros del endogrupo
+
+3. Atribución interna del comportamiento: La gente atribuye su comportamiento a características internas
+
+4. Confianza: Se incrementa dispositción a tyrabajar en favor del grupo
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+
+### Sistemas de liderazgo - Perspectiva evolutiva
+
+--
+
+.pull-left[
+
+### Liderazgos igualitarios
+
+- Se crean en base al prestigio del lider
+- Control de recursos igualitario
+- Persuación es su forma de influir socialmente
+- Seguidores tienen mecanismos de control sobre líderes
+
+]
+
+--
+.pull-right[
+
+### Liderazgos dominantes
+
+
+- Inducen temor a través de la coerción e intimidación
+- Líder tiene completo control de los recursos
+- Tienen rasgos físicos que indican dominancia, produciendo imitación
+- "La instrumentalidad de ser simpático" (Hawley, 1999)
+
+]
+
+<br>
+<br>
+<br>
+
+
+.footnote-small[
+<font size="-3">Petersen, M. B., & Laustsen, L. (2020). Dominant leaders and the political psychology of followership. Current Opinion in Psychology, 33, 136-141.</font>
+<br>
+<font size="-3">Jiménez, Á. V., Flitton, A., & Mesoudi, A. (2021). When do people prefer dominant over prestigious political leaders? Evolutionary Human Sciences, 3, e16.</font>
+<br>
+<font size="-3">Hawley, P. H. (1999). The Ontogenesis of Social Dominance: A Strategy-Based Evolutionary Perspective. Developmental Review, 19(1), 97-132..</font>
+]
+
+---
+class: inverse, middle, center
+
+## ¿Por qué las personas siguen a líderes dominantes?
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+.pull-left[
+
+### Conflicto intergrupal
+
+```{r, out.width="65%", fig.align='center'}
+knitr::include_graphics("clase6_files/intergroup.png")
+```
+
+]
+
+.pull-right[
+
+- En situaciones de amenaza o de competencia con otros grupos por los mismos recursos los líderes dominantes son preferidos
+- Seguidores buscan líderes dominantes no por protección, sino para agredir al grupo contrario
+- La sensación de amenaza puede ser usada por líderes para una manipulación emocional
+
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+class: left, middle
+
+.pull-left[
+
+### Conflicto intergrupal
+
+```{r, out.width="65%", fig.align='center'}
+knitr::include_graphics("clase6_files/intergroup.png")
+```
+
+]
+
+
+.pull-right[
+
+- En situaciones de amenaza o de competencia con otros grupos por los mismos recursos los líderes dominantes son preferidos
+- Seguidores buscan líderes dominantes no por protección, sino para agredir al grupo contrario
+
+]
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+.footnote-small[
+<font size="-3">Kakkar, H., & Sivanathan, N. (2017). When the appeal of a dominant leader is greater than a prestige leader. Proceedings of the National Academy of Sciences, 114(26), 6734-6739.</font>
+<br>
+<font size="-3">van Vugt, M. (2006). Evolutionary Origins of Leadership and Followership. Personality and Social Psychology Review, 10(4), Article 4.</font>
+]
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:left, middle
+
+
+### Escasez de recursos
+
+
+.pull-left[
+
+```{r, out.width="65%", fig.align='center'}
+knitr::include_graphics("https://www.science.org/do/10.1126/science.aax2619/full/chimps_16x9-1644908618940.jpg")
+```
+
+
+]
+
+.pull-right[
+
+- Las personas más fuertes y determinadas manejan los recursos
+- Escasez de recurso hace que el conflicto intergrupal sea más agresivo
+- Incluso estudios observacionales han mostrado que en momento de mayor carestía económica las personas prefieran líderes dominantes
+
+]
+
+<br>
+<br>
+<br>
+
+
+.footnote-small[
+<font size="-3">Kakkar, H., & Sivanathan, N. (2017). When the appeal of a dominant leader is greater than a prestige leader. Proceedings of the National Academy of Sciences, 114(26), 6734-6739.</font>
+<br>
+<font size="-3">van Vugt, M. (2006). Evolutionary Origins of Leadership and Followership. Personality and Social Psychology Review, 10(4), Article 4.</font>
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:inverse, left, middle
+
+
+## Situación económica y perspectiv pesimista
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:left, middle
+
+### Otros factores de preferencia 
+
+.two-col[
+.card-red[
+
+**Ideología**
+<br>
+**Social Dominance Orientation (SDO)**
+
+]
+
+.card-green[
+- Personas conservadoras y/o de derecha tienen mayor preferencia por líder dominantes
+- Liberales y demócratas tienden a subestimar a líderes dominantes
+- Personas con alta orientación a la dominancia social tienen mayor tendencia por líderes dominantes
+]
+]
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+.footnote-small[
+
+<font size="-3">Laustsen, L., Petersen, M. B., & Klofstad, C. A. (2015). Vote Choice, Ideology, and Social Dominance Orientation Influence Preferences for Lower Pitched Voices in Political Candidates. Evolutionary Psychology, 13(3).</font>
+<br>
+<font size="-3">Chon, D., & Kakkar, H. (2021). Nothing to Worry About: Why Liberals Underestimate Dominant Leaders and Act Complacently. Academy of Management Proceedings, 2021(1), 10643. </font>
+]
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:left, middle
+
+
+## ¿Cómo influyen los líderes dominantes?
+
+
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:left, middle
+
+
+## Rasgos físicos
+
+.pull-left[
+
+- Líderes dominantes influyen porque parecen competentes, aunque quizás no lo sean
+- "Rasgos de competencia" transmiten valor social al grupo
+
+1) **Apariencia facial**
+
+- "Cara cuadrada,  mandíbula fuerte, cejas pronunciadas y labios y ojos delgados"
+- Percibido como fortaleza física para cumplir tareas de líder, entre ellas ser agresivo
+- A pesar de que algunas evidencias muestran que el efecto es pequeño, las personas siguen usandolo como señal de dominancia
+
+
+
+]
+
+.pull-right[
+
+```{r, out.width="60%", fig.align='center'}
+knitr::include_graphics("clase6_files/trump.png")
+```
+
+]
+
+
+.footnote-small[
+<font size="-3">Anderson, C., & Kilduff, G. J. (2009). Why do dominant personalities attain influence in face-to-face groups? The competence-signaling effects of trait dominance. Journal of Personality and Social Psychology, 96(2), 491-503.</font>
+<br>
+<font size="-3">van Vugt, M., & Grabo, A. (2015). The Many Faces of Leadership: An Evolutionary-Psychology Approach. Current Directions in Psychological Science, 24(6).</font>
+<br>
+<font size="-3">Laustsen, L., & Petersen, M. B. (2017). Perceived Conflict and Leader Dominance: Individual and Contextual Factors Behind Preferences for Dominant Leaders: Perceived Conflict and Leader Dominance. Political Psychology, 38(6)</font>
+]
+---
+background-image: url(clase6_files/logo_psicologia_UDD.png)
+background-size: 160px
+background-position: 97% 2%
+class:left, middle
+
+
+.pull-left[
+
+```{r, out.width="50%", fig.align='center'}
+knitr::include_graphics("clase6_files/trump.png")
+```
+
+```{r, out.width="50%", fig.align='center'}
+knitr::include_graphics("https://img.allvipp.com/www-promipool-de/image/upload/c_fill,g_faces,h_357,w_634,q_auto:eco,f_webp/barry_white_getty_g8hi53a5zv")
+```
+
+]
+
+.pull-right[
+
+## Rasgos físicos
+
+
+1) **Apariencia facial**
+
+- "Cara cuadrada,  mandíbula fuerte, cejas pronunciadas y labios y ojos delgados"(Van vugt & Grabo, 2015)
+- Percibido como fortaleza física para cumplir tareas de líder, entre ellas ser agresivo
+- A pesar de que algunas evidencias muestran que el efecto es pequeño, las personas siguen usandolo como señal de dominancia
+
+2) **Tono de voz**
+
+- Tono de voz grave aumenta probabilidad de voto
+- Tono de voz es un mecanismo de selección intrasexual entre hombres
+
+]
+
+
+
+.footnote-small[
+<font size="-3">Klofstad, C. A. (2017). Looks and Sounds Like a Winner: Perceptions of Competence in Candidates’ Faces and Voices Influences Vote Choice. Journal of Experimental Political Science, 4(3), 229-240.</font>
+<font size="-3">Tigue, C. C., Borak, D. J., O’Connor, J. J. M., Schandl, C., & Feinberg, D. R. (2012). Voice pitch influences voting behavior. Evolution and Human Behavior, 33(3), 210-216.</font>
+]
+---
+background-image: url(clase6_files/Logo_CICS_debajo_de_Fac_Gob__3_-removebg-preview.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+### Estrategias intragrupales
+
+
+.pull-left[
+
+### Coerción 
+
+- Castigos han demostrado estabilizar estrategias de cooperación en diversos ámbitos 
+- Últimos estudios muestran que líderes dominantes con alto ranking de dominancia, niveles de competitividad, actitudes autoritarias y formidabilidad física mejora la cooperación
+
+
+]
+
+.pull-right[
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("https://pbs.twimg.com/media/FoXeItPWAAEgZeB.jpg")
+```
+
+]
+<br>
+<br>
+<br>
+<br>
+
+.footnote-small[
+<font size="-3">Henrich, J. et.al (2006). Costly Punishment Across Human Societies. Science, 312(5781), 1767-1770.</font>
+<br>
+<font size="-3">Chen, F. X., Zhang, X., Laustsen, L., & Cheng, J. T. (2021). Harsh but Expedient: Dominant Leaders Increase Group Cooperation via Threat of Punishment. Psychological Science, 32(12), 2005-2022.</font>
+]
+---
+background-image: url(clase6_files/Logo_CICS_debajo_de_Fac_Gob__3_-removebg-preview.png)
+background-size: 160px
+background-position: 97% 2%
+class: left, middle
+
+### Estrategias intragrupales
+
+
+### Modelo
+
+- "Liderar con el ejemplo" implicaría la exposición de las habilidades que exponen los líderes dominantes
+- El desempeño y resultado del líder dominante se vuelve un modelo a seguir
+- Primeras acciones son un camino menos costoso a seguir
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+.footnote-small[
+<font size="-3">Hawley, P. H. (2014). Ontogeny and Social Dominance: A Developmental View of Human Power Patterns. Evolutionary Psychology, 12(2).</font>
+<br>
+<font size="-3">Hawley, P. H. (2015). Social Dominance in Childhood and Its Evolutionary Underpinnings: Why It Matters and What We Can Do. Pediatrics, 135(Supplement_2), S31-S38. </font>
+]
+
+
+
+---
+class: center, middle
+background-image: url(https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png)
+background-size: 80px
+background-position: 50% 90%
+
+# ¡Gracias!
+
+
+fvillarroelr@udd.cl
+
+Slide creado con el paquete [**xaringan**](https://github.com/yihui/xaringan).
+
+
+El  chakra viene de [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), y [R Markdown](https://rmarkdown.rstudio.com).
+Este slide fue creado por [**xaringan**](https://github.com/yihui/xaringan) y [**XaringanThemer**](https://pkg.garrickadenbuie.com/xaringanthemer/index.html)
