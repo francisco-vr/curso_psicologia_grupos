@@ -714,9 +714,7 @@ class:left, middle
 
 .pull-left[
 
-```{r, out.width="65%", fig.align='center'}
-knitr::include_graphics("https://www.science.org/do/10.1126/science.aax2619/full/chimps_16x9-1644908618940.jpg")
-```
+
 
 
 ]
@@ -881,7 +879,7 @@ knitr::include_graphics("https://img.allvipp.com/www-promipool-de/image/upload/c
 <font size="-3">Tigue, C. C., Borak, D. J., O’Connor, J. J. M., Schandl, C., & Feinberg, D. R. (2012). Voice pitch influences voting behavior. Evolution and Human Behavior, 33(3), 210-216.</font>
 ]
 ---
-background-image: url(clase6_files/Logo_CICS_debajo_de_Fac_Gob__3_-removebg-preview.png)
+background-image: url(clase6_files/logo_psicologia_UDD.png)
 background-size: 160px
 background-position: 97% 2%
 class: left, middle
@@ -917,7 +915,7 @@ knitr::include_graphics("https://pbs.twimg.com/media/FoXeItPWAAEgZeB.jpg")
 <font size="-3">Chen, F. X., Zhang, X., Laustsen, L., & Cheng, J. T. (2021). Harsh but Expedient: Dominant Leaders Increase Group Cooperation via Threat of Punishment. Psychological Science, 32(12), 2005-2022.</font>
 ]
 ---
-background-image: url(clase6_files/Logo_CICS_debajo_de_Fac_Gob__3_-removebg-preview.png)
+background-image: url(clase6_files/logo_psicologia_UDD.png)
 background-size: 160px
 background-position: 97% 2%
 class: left, middle
