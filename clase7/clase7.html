@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Psicología de los grupos - clase 7: métodos etnográficos</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Francisco Villarroel Riquelme" />
+    <meta name="date" content="2026-04-24" />
+    <script src="clase7_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: left, middle, bg_etnografia
+
+
+
+
+
+&lt;style type="text/css"&gt;
+h1, h2, h3 {
+  text-align: center;
+}
+
+.bg_etnografia {
+  position: relative;
+  z-index: 1;
+}
+.bg_etnografia::before {
+  content: "";
+  background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px; right: 0px; bottom: 0px; left: 0px;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.definition-box {
+  background: #fdf2f3;
+  border-left: 5px solid #b01333;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 10px 0;
+  font-size: 0.88em;
+}
+.highlight-box {
+  background: #fef9e7;
+  border: 2px solid #f39c12;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.info-box {
+  background: #eaf2fb;
+  border-left: 5px solid #085e9f;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(176,19,51,0.12);
+  font-size: 0.84em;
+}
+.card-red   { border-top: 4px solid #b01333; }
+.card-blue  { border-top: 4px solid #085e9f; }
+.card-green { border-top: 4px solid #1e8449; }
+.card-orange{ border-top: 4px solid #e67e22; }
+
+.badge {
+  display: inline-block;
+  background: #b01333;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78em;
+  font-weight: bold;
+  margin-right: 6px;
+}
+.badge-blue  { background: #085e9f; }
+.badge-green { background: #1e8449; }
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+.step-num {
+  background: #b01333;
+  color: white;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 0.9em;
+}
+
+.footnote-small {
+  font-size: 0.68em;
+  color: #777;
+  border-top: 1px solid #DDD;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+
+table { font-size: 0.78em; width: 100%; border-collapse: collapse; }
+th { background: #b01333; color: white; padding: 7px 10px; text-align: left; }
+td { padding: 6px 10px; border-bottom: 1px solid #e0e0e0; }
+tr:nth-child(even) { background: #f5f7fa; }
+
+blockquote {
+  border-left: 4px solid #b01333;
+  background: #fdf2f3;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #333;
+  margin: 10px 0;
+  font-size: 0.90em;
+}
+&lt;/style&gt;
+
+---
+class: left, middle, bg_etnografia
+
+# Métodos Etnográficos para el Estudio de Grupos
+## Psicología de los Grupos — Clase 7
+
+**Francisco Villarroel Riquelme** | 2026-04-24
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, top
+
+# ¿Qué veremos hoy?
+
+.two-col[
+.card.card-red[
+**Parte I: Contexto metodológico**
+- ¿Qué son los métodos cualitativos?
+- Diferencias clave cuali/cuanti
+- Muestras cualitativas
+]
+.card.card-blue[
+**Parte II: Etnografía**
+- Conceptualización de la etnografía
+- El campo y el investigador
+- Etnografía digital
+- Etnografía aplicada a grupos
+]
+]
+
+---
+class: inverse, center, middle
+
+## Parte I: Contexto metodológico cualitativo
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## ¿Qué es la investigación cualitativa?
+
+.definition-box[
+_Método que se enfoca en **comprender los fenómenos**, explorándolos desde la perspectiva de los participantes en un ambiente natural y en relación con su contexto._
+]
+
+--
+
+Se utiliza cuando se quiere analizar **puntos de vista, interpretaciones y significados**, y cuando no hay mucha investigación previa disponible.
+
+--
+
+&gt; En el estudio de grupos, esto es especialmente valioso: nos permite entender **cómo viven los grupos su propia dinámica** desde adentro.
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Diferencias entre paradigmas cuantitativo y cualitativo
+
+.two-col[
+.card.card-red[
+**Cuantitativo**
+- Busca **medir** atributos
+- Acota y disecciona la realidad
+- Representatividad estadística
+- Hipótesis previas que se prueban
+]
+.card.card-blue[
+**Cualitativo**
+- Busca **interpretar** fenómenos
+- Expande y profundiza en datos
+- Riqueza y profundidad &gt; tamaño
+- Hipótesis emergentes y flexibles
+]
+]
+
+--
+
+.highlight-box[
+⚠️ **¡No hay mejor método!** La elección depende de la pregunta de investigación y el estado del conocimiento en el área.
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Muestras cualitativas
+
+Las muestras cualitativas **no buscan representar a una población**. Se priorizan sujetos que aporten riqueza y profundidad al análisis.
+
+--
+
+| Tipo de muestra | Uso principal |
+|---|---|
+| **Expertos** | Comprensión profunda de fenómenos específicos |
+| **Casos tipo** | Representar personas con un perfil muy específico |
+| **Máxima variabilidad** | Mostrar diversidad de perspectivas del fenómeno |
+| **Homogénea** | Lograr saturación con perfiles similares |
+| **Bola de nieve** | Contacto a través de informantes clave que reclutan más |
+| **Casos extremos** | Estudiar fenómenos atípicos o marginales |
+
+--
+
+.info-box[
+🎯 Se busca el **proceso de saturación**: el punto en que nuevos casos ya no agregan información nueva al análisis.
+]
+
+---
+class: inverse, center, middle
+
+## Parte II: Etnografía
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Etnografía: definición
+
+&gt; _"La etnografía es el trabajo de **describir una cultura**. Tiende a comprender otra forma de vida desde el punto de vista de los que la viven [...] Más que «estudiar a la gente», la etnografía significa **«aprender de la gente»**. El núcleo central de la etnografía es la preocupación por captar el significado de las acciones y los sucesos para la gente que tratamos de comprender."_
+
+.footnote-small[Spradley, 1979, p. 3]
+
+--
+
+.definition-box[
+Se trata de una **investigación iterativa-inductiva** (que evoluciona en su diseño a lo largo del estudio), que reconoce el rol de la teoría y del investigador, y que considera a los seres humanos como parte objeto/parte sujeto (O'Reilly, 2005).
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Etnografía: objetivo
+
+&gt; _"El propósito de la investigación etnográfica es describir y analizar lo que las personas de un sitio, estrato o contexto determinado hacen usualmente [...] así como los significados que le dan a ese comportamiento realizado en circunstancias comunes o especiales, y presentar los resultados de manera que se resalten las regularidades que implica un proceso cultural."_
+
+--
+
+La etnografía tiene una **triple acepción**:
+
+.three-col[
+.card.card-red[
+**Enfoque**  
+Perspectiva epistemológica de comprensión desde adentro
+]
+.card.card-blue[
+**Método**  
+Conjunto de técnicas de observación y recolección de datos
+]
+.card.card-green[
+**Texto**  
+Producto final: el informe etnográfico  
+(Guber, 2001)
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Características de la investigación etnográfica
+
+.two-col[
+.card.card-red[
+**Epistemológicas**
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;1&lt;/div&gt;&lt;div&gt;Preguntas para entender estructura, patrones de comportamiento y funciones&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;2&lt;/div&gt;&lt;div&gt;Es interpretativa, reflexiva y constructuvista&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;3&lt;/div&gt;&lt;div&gt;Datos interpretados "desde dentro"&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;4&lt;/div&gt;&lt;div&gt;Armar un rompecabezas desde una visión holística&lt;/div&gt;&lt;/div&gt;
+]
+.card.card-blue[
+**Técnicas y prácticas**
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;5&lt;/div&gt;&lt;div&gt;Observación directa como participante&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;6&lt;/div&gt;&lt;div&gt;Énfasis en interacciones sociales&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;7&lt;/div&gt;&lt;div&gt;Mapear el contexto físico y digital del campo&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;8&lt;/div&gt;&lt;div&gt;Permite integrar otros métodos (entrevistas, grupos focales, etc.)&lt;/div&gt;&lt;/div&gt;
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## El campo
+
+&gt; _"No solo se trata de «ir» a un lugar, sino a su vez de una manera de «estar» y mucho más aún de una forma de «posicionarse» en el campo. Para algunos «el trabajo de campo es un ejercicio de papeles múltiples»."_
+
+--
+
+.two-col[
+.card.card-red[
+**¿Qué es el campo?**
+- El "lugar" donde los actores sociales despliegan su vida
+- Es el referente empírico de la investigación
+- Puede ser físico, digital, o ambos
+]
+.card.card-blue[
+**Unidades de análisis posibles**
+- Individuos, organizaciones, grupos
+- Redes sociales, comunidades, culturas
+- Prácticas individuales, compartidas o relacionales
+- Entorno físico y cultura material
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## El investigador en el campo
+
+.two-col[
+.card.card-red[
+**Cómo entrar**
+- Elegir una comunidad o campo específico
+- Se prioriza **intensividad** por sobre extensividad
+- Llegar por medio de **informantes clave**
+- Señalar que estás haciendo investigación → consentimiento
+]
+.card.card-blue[
+**Cómo estar**
+- Si es observación participante: integrarse paulatinamente
+- Ser amable y empático
+- Elaborar una historia o guión de investigación
+- Ojo con las expectativas del grupo sobre el investigador
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Etnografía aplicada al estudio de grupos
+
+.info-box[
+En psicología de grupos, la etnografía permite observar los **procesos grupales en acción**, no solo los reportes retrospectivos de los participantes.
+]
+
+--
+
+.two-col[
+.card.card-red[
+**¿Qué se puede observar?**
+- Dinámicas de liderazgo emergente
+- Patrones de comunicación y turnos de habla
+- Conformidad, disidencia y presión social
+- Rituales grupales y construcción de identidad colectiva
+- Manejo de conflictos y toma de decisiones
+]
+.card.card-blue[
+**Ventaja frente a otros métodos**
+- Captura comportamientos **no verbalizados**
+- Permite ver la brecha entre lo que el grupo *dice* que hace y lo que *realmente* hace
+- Accede a normas tácitas e implícitas
+- Documenta la evolución del grupo **en el tiempo**
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Roles del investigador en la observación de grupos
+
+Los distintos roles del observador implican distintos niveles de inmersión e implicación:
+
+--
+
+| Rol | Descripción | Ventaja | Riesgo |
+|---|---|---|---|
+| **Observador puro** | No participa, solo registra | Neutralidad | Poca accesibilidad |
+| **Observador participante** | Participa parcialmente | Acceso a prácticas cotidianas | Influencia en el grupo |
+| **Participante observador** | Integrado al grupo, observa | Acceso total a dinámicas internas | Pérdida de distancia analítica |
+
+--
+
+.highlight-box[
+⚠️ En el estudio de grupos, el investigador siempre altera de algún modo las dinámicas que observa. Esto no invalida la investigación, pero **debe ser reflexionado y documentado** en el diario de campo.
+]
+
+---
+class: inverse, center, middle
+
+## Etnografías digitales
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Lo "digital" en las interacciones
+
+.two-col[
+.card.card-red[
+**Transformaciones del campo**
+- Aparecimiento de comunidades digitales
+- El concepto de "campo" se vuelve difuso
+- No hay un campo preexistente: el investigador lo construye
+
+&gt; _"No existe un campo preexistente al que el investigador llega, sino una variedad de formas de conexión no anticipadas que el etnógrafo ha de explorar."_
+.footnote-small[Hine, 2015; Postill &amp; Pink, 2012]
+]
+.card.card-blue[
+**Elementos clave**
+- **Sociabilidad por afinidad**: grupos que se forman en torno a intereses compartidos
+- Las comunidades digitales son muy flexibles y cambiantes
+- **Datificación de prácticas sociales**: sistemas de estatus, likes, seguidores
+- Mecanismos de reconocimiento y frustración visibles
+]
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Registro en etnografía
+
+.two-col[
+.card.card-red[
+**Herramientas de registro**
+- Notas de campo escritas (diario de campo)
+- Fotografías para graficar elementos visuales
+- Notas de voz (no deben pasar del mismo día)
+- Transcripción de audio: herramientas de IA como *gladia.io*
+]
+.card.card-blue[
+**El diario de campo**
+- Registro de observaciones
+- Reflexiones propias e interrogantes emergentes
+- Descripciones de interacciones y ambiente
+- Hipótesis provisionales que van surgiendo
+]
+]
+
+---
+
+&lt;img src="clase7_files/diario_campo.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, center, middle
+
+## Formas de reportar la información
+
+---
+
+&lt;img src="clase7_files/rercasens.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="clase7_files/misa.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="clase7_files/aburrido.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Ejercicio práctico: etnografiar un grupo
+
+--
+
+**Salir a etnografiar un grupo en acción:**
+
+--
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;1&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Seleccione su campo&lt;/strong&gt;: un grupo reunido en algún lugar (cafetería, sala de espera, patio, espacio digital)&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;2&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Analice cómo interactúa el grupo&lt;/strong&gt;: ¿quiénes hablan y quiénes no? ¿hay un líder emergente? ¿qué dice el lenguaje no verbal?&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;3&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Anote todo lo que observa&lt;/strong&gt;, incluyendo sus propios pensamientos y preguntas que van surgiendo&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="step"&gt;&lt;div class="step-num"&gt;4&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Déjese asombrar&lt;/strong&gt;: lo obvio también merece ser anotado&lt;/div&gt;&lt;/div&gt;
+
+--
+
+.highlight-box[
+⏱ Nos vemos en **media hora** a conversar sobre sus resultados. ¿Qué dinámica de grupo pudieron observar?
+]
+
+---
+background-image: url(clase7_files/logo_psicologia_UDD.png)
+background-size: 150px
+background-position: 97% 97%
+class: left, middle
+
+## Síntesis de la clase
+
+.three-col[
+.card.card-red[
+**Métodos cualitativos**
+- Comprenden fenómenos desde la perspectiva de los participantes
+- No buscan representar, sino profundizar
+- Exigen habilidades teóricas y sociales del investigador
+]
+.card.card-blue[
+**Etnografía**
+- Aprender *de* la gente, no solo *sobre* la gente
+- Triple acepción: enfoque, método y texto
+- Requiere presencia sostenida en el campo
+]
+.card.card-green[
+**Etnografía de grupos**
+- Permite acceder a dinámicas grupales no verbalizadas
+- El rol del observador influye en el grupo estudiado
+- El diario de campo es la herramienta central
+]
+]
+
+---
+class: inversed, center, middle
+background-image: url(https://user-images.githubusercontent.com/163582/45438104-ea200600-b67b-11e8-80fa-d9f2a99a03b0.png)
+background-size: 80px
+background-position: 50% 90%
+
+# ¡Gracias!
+
+### fvillarroelr@udd.cl
+
+Slide creado con el paquete [**xaringan**](https://github.com/yihui/xaringan).
+
+El chakra viene de [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), y [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "slideNumberFormat": "%current%",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "ratio": "16:9",
+  "countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
